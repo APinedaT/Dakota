@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="acquirer_form_mercadopago" model="ir.ui.view">
+        <field name="name">acquirer.form.mercadopago</field>
+        <field name="model">payment.acquirer</field>
+        <field name="inherit_id" ref="payment.acquirer_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//group[@name="acquirer"]' position='after'>
+                <group attrs="{'invisible': [('provider', '!=', 'mercadopago')]}">
+                    <group>
+                        <field name="mercadopago_api_access_token"
+                               attrs="{'required': [('provider', '=', 'mercadopago')]}"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="transaction_form_mercadopago" model="ir.ui.view">
+        <field name="name">acquirer.transaction.form.mercadopago</field>
+        <field name="model">payment.transaction</field>
+        <field name="inherit_id" ref="payment.transaction_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button type="object"
+                        attrs="{'invisible':['|', ('provider', '!=', 'mercadopago'), ('state', '=', 'done')] }"
+                        name="action_mercadopago_check_status"
+                        class="oe_stat_button">
+                    <img src="/payment_mercadopago/static/src/img/mercadopago_logo_64.png" width="32"
+                         alt="logo mp"/>
+                    <span>Actualizar estado</span>
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='acquirer_reference']" position="after">
+                <field name="mercadopago_txn_id" attrs="{'invisible':[('provider', '!=', 'mercadopago')] }"/>
+                <field name="mercadopago_txn_type" attrs="{'invisible':[('provider', '!=', 'mercadopago')] }"/>
+                <field name="mercadopago_txn_preference_id"
+                       attrs="{'invisible':[('provider', '!=', 'mercadopago')] }"/>
+                <field name="mercadopago_txn_merchant_order_id"
+                       attrs="{'invisible':[('provider', '!=', 'mercadopago')] }"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

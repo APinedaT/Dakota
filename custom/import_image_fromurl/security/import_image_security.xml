@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="import_image_fromurl.import_image_url_file" model="res.groups">
+            <field name="name">Upload Images From URL/File</field>
+        </record>
+        <record id="import_image_fromurl.view_general_info" model="res.groups">
+            <field name="name">Show general info in product</field>
+        </record>
+        <record id="import_image_fromurl.view_general_header" model="res.groups">
+            <field name="name">Show header in product</field>
+        </record>
+
+    </data>
+</openerp>
