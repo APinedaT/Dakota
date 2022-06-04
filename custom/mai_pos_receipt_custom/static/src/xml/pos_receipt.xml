@@ -24,6 +24,11 @@
 					</t>
 					<br />
 				</center>
+				<div id="cotizacion" class="hidden">
+					<p class="text-center" style="background: black;text-align: center;color: white;">
+						Cotizacion
+					</p>
+				</div>
 				<t t-if="receipt.header">
 					<div style='text-align:center'>
 						<t t-esc="receipt.header" />
